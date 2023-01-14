@@ -32,6 +32,9 @@
   z walidacją asercji pól.
 - W kontrolerach pominąłem walutę, nie wiem jak biznes chce to rozwiązać. Ale w domenie można ją definiować.
 
+### GraphQL
+
+- http://localhost:8000/api/graphql/playground
 
 ## Storage
 

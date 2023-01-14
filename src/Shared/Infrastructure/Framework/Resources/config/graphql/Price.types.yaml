@@ -1,0 +1,8 @@
+Price:
+    type: object
+    config:
+        fields:
+            amount:
+                type: Int!
+            currency:
+                type: String!

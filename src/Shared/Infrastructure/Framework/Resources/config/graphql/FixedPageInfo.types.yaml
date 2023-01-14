@@ -1,0 +1,16 @@
+FixedPageInfo:
+    type: object
+    config:
+        fields:
+            page:
+                type: Int!
+                description: "Current page"
+            pagesCount:
+                type: Int!
+                description: "Total pages number"
+            limit:
+                type: Int!
+                description: "Max number of elements returned in this collection"
+            totalEdges:
+                type: Int!
+                description: "Total number of found rows"

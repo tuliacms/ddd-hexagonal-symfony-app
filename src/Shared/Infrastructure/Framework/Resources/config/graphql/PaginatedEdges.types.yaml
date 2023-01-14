@@ -1,0 +1,10 @@
+PaginatedEdges:
+    type: object
+    config:
+        description: "Unified pagination object"
+        fields:
+            pageInfo:
+                type: FixedPageInfo!
+            edges:
+                type: "[String]"
+                description: "[Here should be Your implementation of edges]"

@@ -1,0 +1,11 @@
+Product:
+    type: object
+    config:
+        description: "Unified pagination object"
+        fields:
+            id:
+                type: String!
+            name:
+                type: String!
+            price:
+                type: Price!

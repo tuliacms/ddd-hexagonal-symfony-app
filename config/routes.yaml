@@ -3,6 +3,11 @@ controllers.product:
         path: ../src/Product/UserInterface/Web/Controller/
         namespace: App\Product\UserInterface\Web\Controller
     type: attribute
+controllers.shared:
+    resource:
+        path: ../src/Shared/UserInterface/Web/Controller/
+        namespace: App\Shared\UserInterface\Web\Controller
+    type: attribute
 
 app.swagger_ui:
     path: /api/doc

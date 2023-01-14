@@ -1,0 +1,12 @@
+RootQuery:
+    type: object
+    config:
+        fields:
+            products:
+                args:
+                    limit:
+                        type: Int!
+                    page:
+                        type: Int!
+                type: PaginatedProducts!
+                resolve: '@=query("root_product_list", args)'

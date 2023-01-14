@@ -9,6 +9,16 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
+
+    App\Shared\UserInterface\Web\Controller\GraphQL:
+        tags: [ controller.service_arguments ]
+        arguments:
+            $shouldHandleCORS: false
+            $graphQLBatchingMethod: false
+
+    App\Shared\UserInterface\Web\Controller\GraphQLPlayground:
+        tags: [ controller.service_arguments ]
+        arguments:
+            $shouldHandleCORS: false
+            $graphQLBatchingMethod: false

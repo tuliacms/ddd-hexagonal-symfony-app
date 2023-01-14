@@ -1,0 +1,7 @@
+PaginatedProducts:
+    type: object
+    inherits: [PaginatedEdges]
+    config:
+        fields:
+            edges:
+                type: "[Product!]"
