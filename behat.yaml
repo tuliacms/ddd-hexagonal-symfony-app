@@ -1,0 +1,14 @@
+default:
+    formatters:
+        pretty:
+            verbose: true
+            paths: false
+            snippets: false
+    autoload:
+        '': '%paths.base%/tests/behat/bootstrap'
+    suites:
+        content_type:
+            paths:
+                features: '%paths.base%/tests/behat/features/product'
+            contexts:
+                - App\Tests\behat\bootstrap\Product\ProductContext
