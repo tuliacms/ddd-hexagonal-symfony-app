@@ -1,3 +1,11 @@
+# Uruchomienie
+
+- `make setup`
+- `make up`
+  - Swagger: http://localhost:8000/api/doc
+  - GraphQL Playground: http://localhost:8000/api/graphql/playground
+
+
 ## Namespace
 
 - Nie zmieniałem nic, normalnie powinno być vendor/project itp, ale szkoda było mi czasu na zabawę,

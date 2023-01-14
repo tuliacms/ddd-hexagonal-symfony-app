@@ -7,8 +7,6 @@ namespace App\Product\Infrastructure\Filesystem;
 use App\Product\Domain\WriteModel\Exception\ProductDoesNotExistsException;
 use App\Product\Domain\WriteModel\Model\Product;
 use App\Product\Domain\WriteModel\Service\ProductRepositoryInterface;
-use SleekDB\Exceptions\InvalidArgumentException;
-use SleekDB\Exceptions\IOException;
 use Symfony\Component\Uid\Uuid;
 
 /**

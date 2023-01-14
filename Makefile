@@ -1,3 +1,7 @@
+.PHONY: setup
+setup:
+	php bin/console app:setup
+
 .PHONY: unit
 unit:
 	php vendor/bin/behat
