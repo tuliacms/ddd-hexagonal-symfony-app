@@ -7,14 +7,12 @@ namespace App\Cart\Domain\WriteModel\Event;
 /**
  * @author Adam Banaszkiewicz
  */
-final class ProductAddedToCart extends AbstractEventSourcingEvent
+final class ProductRemovedFromCart extends AbstractEventSourcingEvent
 {
     public function __construct(
         public readonly string $cartId,
         public readonly string $productId,
         public readonly int $qty,
-        public readonly float $amount,
-        public readonly string $currency,
     ) {
         parent::__construct();
     }

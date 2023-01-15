@@ -12,6 +12,7 @@ use App\Cart\Domain\WriteModel\Model\Product;
 final class CanIAddProduct implements CanIAddProductInterface
 {
     private const PRODUCTS_QTY_LIMIT = 10;
+    private const PRODUCTS_TOTAL_LIMIT = 3;
 
     public function decide(
         string $productId,
@@ -50,6 +51,6 @@ final class CanIAddProduct implements CanIAddProductInterface
             return false;
         }
 
-        return count($productsQtyList) >= 3;
+        return count($productsQtyList) >= self::PRODUCTS_TOTAL_LIMIT;
     }
 }

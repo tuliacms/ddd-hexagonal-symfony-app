@@ -18,6 +18,11 @@ final class Product
     ) {
     }
 
+    public function getPrice(): Money
+    {
+        return $this->price;
+    }
+
     public function isA(string $productId): bool
     {
         return $this->productId === $productId;

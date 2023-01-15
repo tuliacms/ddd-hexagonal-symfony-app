@@ -7,6 +7,7 @@ namespace App\Cart\Domain\WriteModel\Model;
 use App\Cart\Domain\WriteModel\Event\CartCreated;
 use App\Cart\Domain\WriteModel\Event\ProductAddedToCart;
 use App\Cart\Domain\WriteModel\Event\ProductQtyIncreased;
+use App\Cart\Domain\WriteModel\Event\ProductRemovedFromCart;
 use App\Cart\Domain\WriteModel\Exception\CannotAddProductToCartException;
 use App\Cart\Domain\WriteModel\Rules\CanIAddProduct\CanIAddProductInterface;
 use App\Cart\Domain\WriteModel\Rules\CanIAddProduct\CanIAddProductReasonEnum;
@@ -70,7 +71,23 @@ final class Cart extends AbstractAggregateRoot
             $newProduct->increaseQtyOf($qty);
 
             $this->products[] = $newProduct;
-            $this->recordThat(new ProductAddedToCart($this->id, $productId, $qty));
+            $this->recordThat(new ProductAddedToCart(
+                $this->id,
+                $productId,
+                $qty,
+                $newProduct->getPrice()->getAmount(),
+                $newProduct->getPrice()->getCurrency()->getName(),
+            ));
+        }
+    }
+
+    public function removeProduct(string $productId): void
+    {
+        foreach ($this->products as $key => $product) {
+            if ($product->isA($productId)) {
+                unset($this->products[$key]);
+                $this->recordThat(new ProductRemovedFromCart($this->id, $productId, $product->getQty()));
+            }
         }
     }
 
