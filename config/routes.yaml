@@ -3,6 +3,11 @@ controllers.product:
         path: ../src/Product/UserInterface/Web/Controller/
         namespace: App\Product\UserInterface\Web\Controller
     type: attribute
+controllers.cart:
+    resource:
+        path: ../src/Cart/UserInterface/Web/Controller/
+        namespace: App\Cart\UserInterface\Web\Controller
+    type: attribute
 controllers.shared:
     resource:
         path: ../src/Shared/UserInterface/Web/Controller/

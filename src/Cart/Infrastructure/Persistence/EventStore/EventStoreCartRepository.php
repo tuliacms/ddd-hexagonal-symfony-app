@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Cart\Application\Infrastructure\Persistence\EventStore;
+namespace App\Cart\Infrastructure\Persistence\EventStore;
 
 use App\Cart\Domain\WriteModel\Model\Cart;
 use App\Cart\Domain\WriteModel\Service\CartRepositoryInterface;
