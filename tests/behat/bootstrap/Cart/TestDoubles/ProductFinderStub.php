@@ -16,7 +16,7 @@ final class ProductFinderStub implements ProductFinderInterface
 {
     private array $products = [];
 
-    public function makeProductExists(string $product, float $amount, string $currency): void
+    public function makeProductExists(string $product, string $amount, string $currency): void
     {
         $this->products[$product] = [
             'amount' => $amount,
@@ -30,6 +30,6 @@ final class ProductFinderStub implements ProductFinderInterface
             return null;
         }
 
-        return new Product($id, 0, new Money($this->products[$id]['amount'], new Currency($this->products[$id]['currency'])));
+        return new Product($id, 0, new Money((string) $this->products[$id]['amount'], new Currency($this->products[$id]['currency'])));
     }
 }

@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\helper\ObjectMother;
 
+use App\Cart\Domain\WriteModel\Event\AbstractEventSourcingEvent;
+use App\Cart\Domain\WriteModel\Event\CartCreated;
+use App\Cart\Domain\WriteModel\Event\ProductAddedToCart;
 use App\Cart\Domain\WriteModel\Model\Cart;
 use App\Cart\Domain\WriteModel\Service\ProductFinderInterface;
-use App\Tests\behat\bootstrap\Cart\TestDoubles\AlwaysTrueCanIAddProduct;
 use Symfony\Component\Uid\Uuid;
 
 /**
@@ -14,9 +16,13 @@ use Symfony\Component\Uid\Uuid;
  */
 final class CartMother
 {
-    private array $products = [];
+    private string $id;
+    /** @var AbstractEventSourcingEvent[] */
+    private array $events = [];
 
     private function __construct() {
+        $this->id = (string) Uuid::v4();
+        $this->events[] = new CartCreated($this->id);
     }
 
     public static function aCart(): self
@@ -24,27 +30,23 @@ final class CartMother
         return new self();
     }
 
-    public function withProduct(string $product, int $qty): self
+    public function withProduct(string $productId, int $qty, ProductFinderInterface $productFinder): self
     {
-        $this->products[] = ['id' => $product, 'qty' => $qty];
+        $product = $productFinder->find($productId);
+
+        $this->events[] = new ProductAddedToCart(
+            $this->id,
+            $productId,
+            $qty,
+            $product->getPrice()->getAmount(),
+            $product->getPrice()->getCurrency()-> getCode(),
+        );
+
         return $this;
     }
 
-    public function build(
-        ProductFinderInterface $productFinder,
-    ): Cart {
-        $cart = Cart::create((string) Uuid::v4());
-
-        foreach ($this->products as $product) {
-            $cart->addProduct(
-                new AlwaysTrueCanIAddProduct(),
-                $productFinder,
-                $product['id'],
-                $product['qty'],
-            );
-        }
-        $cart->collectDomainEvents();
-
-        return $cart;
+    public function build(): Cart
+    {
+        return Cart::regenerateFromEvents($this->events);
     }
 }

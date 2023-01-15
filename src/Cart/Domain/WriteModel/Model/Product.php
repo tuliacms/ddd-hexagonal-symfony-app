@@ -18,6 +18,18 @@ final class Product
     ) {
     }
 
+    public function toArray(): array
+    {
+        return [
+            'product_id' => $this->productId,
+            'qty' => $this->qty,
+            'price' => [
+                'amount' => $this->price->getAmount(),
+                'currency' => $this->price->getCurrency()->getCode(),
+            ]
+        ];
+    }
+
     public function getPrice(): Money
     {
         return $this->price;
@@ -41,5 +53,13 @@ final class Product
     public function getQty(): int
     {
         return $this->qty;
+    }
+
+    public function withQtyOf(int $qty): self
+    {
+        $self = clone $this;
+        $self->qty = $qty;
+
+        return $self;
     }
 }

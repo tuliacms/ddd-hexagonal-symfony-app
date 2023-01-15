@@ -52,7 +52,7 @@ class CartContext implements Context
     /**
      * @Given there is product named :product, with price :amount :currency
      */
-    public function thereIsProductNamedWithPriceUsd(string $product, float $amount, string $currency): void
+    public function thereIsProductNamedWithPriceUsd(string $product, string $amount, string $currency): void
     {
         $this->productFinder->makeProductExists($product, $amount, $currency);
     }

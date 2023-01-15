@@ -7,7 +7,7 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "money/money": "^2.0",
+        "moneyphp/money": "^4.1",
         "nelmio/api-doc-bundle": "^4.10",
         "overblog/graphql-bundle": "^0.15.1",
         "rakibtg/sleekdb": "^2.15",

@@ -31,7 +31,7 @@ final class Product extends AbstractAggregateRoot
             $this->id,
             $this->name,
             $this->price->getAmount(),
-            $this->price->getCurrency()->getSymbol()
+            $this->price->getCurrency()->getCode()
         ));
     }
 
@@ -74,7 +74,7 @@ final class Product extends AbstractAggregateRoot
             'name' => $this->name,
             'price' => [
                 'amount' => $this->price->getAmount(),
-                'currency' => $this->price->getCurrency()->getName(),
+                'currency' => $this->price->getCurrency()->getCode(),
             ],
         ];
     }
@@ -96,9 +96,9 @@ final class Product extends AbstractAggregateRoot
         $this->recordThat(new ProductRenamed($this->id, $newName));
     }
 
-    public function changePrice(float $amount): void
+    public function changePrice(string $amount): void
     {
         $this->price = new Money($amount, $this->price->getCurrency());
-        $this->recordThat(new ProductPriceChanged($this->id, $this->price->getAmount(), $this->price->getCurrency()->getSymbol()));
+        $this->recordThat(new ProductPriceChanged($this->id, $this->price->getAmount(), $this->price->getCurrency()->getCode()));
     }
 }

@@ -13,7 +13,7 @@ final class ProductPriceChanged extends AbstractDomainEvent
 {
     public function __construct(
         public readonly string $id,
-        public readonly float $amount,
+        public readonly string $amount,
         public readonly string $currency,
     ) {
     }

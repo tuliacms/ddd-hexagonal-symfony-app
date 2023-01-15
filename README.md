@@ -15,6 +15,7 @@
 ## Testy
 
 - `make unit`
+- `make behat`
 - Domena przetestowana za pomocą Behata i BDD. Nie robiłem wszystkich testów, a tylko te,
   które wg wymagań mają logikę biznesową. Szkoda czasu na puste testy :)
 - `make integration`

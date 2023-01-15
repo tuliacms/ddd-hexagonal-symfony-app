@@ -29,7 +29,7 @@ final class CreateProduct
      */
     public function __invoke(
         string $name,
-        float $amount,
+        string $amount,
     ): string {
         $id = $this->repository->getNextId();
         $product = Product::create(

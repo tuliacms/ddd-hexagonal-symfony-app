@@ -33,7 +33,7 @@ final class CreateProductTest extends AbstractIntegrationTest
         $createProduct = $this->get(CreateProduct::class);
 
         // When
-        $id = $createProduct('Fallout', 199);
+        $id = $createProduct('Fallout', '199');
 
         // Then
         self::assertTrue($this->productStorage->productExists($id));
@@ -51,7 +51,7 @@ final class CreateProductTest extends AbstractIntegrationTest
         $this->productSeed->randomProduct('Fallout');
 
         // When
-        $id = $createProduct('Fallout', 199);
+        $id = $createProduct('Fallout', '199');
 
         // Then
         self::assertTrue($this->productStorage->productExists($id));

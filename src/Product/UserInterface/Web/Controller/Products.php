@@ -42,7 +42,7 @@ final class Products extends AbstractApiController
         $data = $this->getContentFrom($request);
 
         try {
-            $id = $createProduct($data['name'], $data['price']);
+            $id = $createProduct($data['name'], (string) $data['price']);
         } catch (CannotCreateNewProductException $e) {
             return $this->responseBadRequest($e->reason);
         }
@@ -73,7 +73,7 @@ final class Products extends AbstractApiController
         }
 
         try {
-            $updateProduct($id, $data['name'], $data['price']);
+            $updateProduct($id, $data['name'], (string) $data['price']);
         } catch (ProductDoesNotExistsException $e) {
             return $this->responseNotFound();
         } catch (CannotRenameProductException $e) {

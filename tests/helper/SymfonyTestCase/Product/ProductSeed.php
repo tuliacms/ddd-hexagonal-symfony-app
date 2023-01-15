@@ -19,7 +19,7 @@ final class ProductSeed
 
     public function randomProduct(string $name): string
     {
-        $product = ProductMother::aProduct($name)->withPrice(199)->build();
+        $product = ProductMother::aProduct($name)->withPrice('199')->build();
         $this->factory->storage()->insert($product->toArray());
 
         return $product->getId();

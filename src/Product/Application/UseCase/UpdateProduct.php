@@ -26,7 +26,7 @@ final class UpdateProduct
      * @throws ProductDoesNotExistsException
      * @throws CannotRenameProductException
      */
-    public function __invoke(string $id, ?string $name, ?float $price): void
+    public function __invoke(string $id, ?string $name, ?string $price): void
     {
         $product = $this->repository->get($id);
 

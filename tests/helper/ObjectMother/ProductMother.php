@@ -26,7 +26,7 @@ final class ProductMother
         return new self($name);
     }
 
-    public function withPrice(float $amount, string $currency = 'USD'): self
+    public function withPrice(string $amount, string $currency = 'USD'): self
     {
         $this->price = new Money($amount, new Currency($currency));
         return $this;

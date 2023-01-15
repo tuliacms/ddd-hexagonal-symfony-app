@@ -14,8 +14,8 @@ final class ProductCreated extends AbstractDomainEvent
     public function __construct(
         public readonly string $id,
         public readonly string $name,
-        public readonly float $amount,
-        public readonly string $currrency,
+        public readonly string $amount,
+        public readonly string $currency,
     ) {
     }
 }

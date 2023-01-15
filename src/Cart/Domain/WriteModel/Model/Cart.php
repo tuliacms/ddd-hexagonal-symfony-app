@@ -19,6 +19,8 @@ use App\Shared\Domain\WriteModel\Model\AbstractAggregateRoot;
  */
 final class Cart extends AbstractAggregateRoot
 {
+    use CartRegenerableTrait;
+
     /** @var Product[] */
     private array $products = [];
 
@@ -32,6 +34,14 @@ final class Cart extends AbstractAggregateRoot
         string $id,
     ): self {
         return new self($id);
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'products' => array_map(static fn($p) => $p->toArray(), $this->products),
+        ];
     }
 
     /**
@@ -76,7 +86,7 @@ final class Cart extends AbstractAggregateRoot
                 $productId,
                 $qty,
                 $newProduct->getPrice()->getAmount(),
-                $newProduct->getPrice()->getCurrency()->getName(),
+                $newProduct->getPrice()->getCurrency()->getCode(),
             ));
         }
     }
@@ -86,7 +96,7 @@ final class Cart extends AbstractAggregateRoot
         foreach ($this->products as $key => $product) {
             if ($product->isA($productId)) {
                 unset($this->products[$key]);
-                $this->recordThat(new ProductRemovedFromCart($this->id, $productId, $product->getQty()));
+                $this->recordThat(new ProductRemovedFromCart($this->id, $productId));
             }
         }
     }

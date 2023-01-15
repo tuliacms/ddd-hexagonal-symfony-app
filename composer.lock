@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e84902e48d608e64d497474151a0217c",
+    "content-hash": "3289d06cbec4139c8aee9b19d6f1d6f0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -204,39 +204,60 @@
             "time": "2022-12-14T08:49:07+00:00"
         },
         {
-            "name": "money/money",
-            "version": "2.0.3",
+            "name": "moneyphp/money",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-mod/money.git",
-                "reference": "8666ec5b7fc686973740bfb47fa2968d65953dfe"
+                "url": "https://github.com/moneyphp/money.git",
+                "reference": "c8eeeb1f7b7e6ca95490b94a301dc9cb8cb76c2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mod/money/zipball/8666ec5b7fc686973740bfb47fa2968d65953dfe",
-                "reference": "8666ec5b7fc686973740bfb47fa2968d65953dfe",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/c8eeeb1f7b7e6ca95490b94a301dc9cb8cb76c2d",
+                "reference": "c8eeeb1f7b7e6ca95490b94a301dc9cb8cb76c2d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "ext-bcmath": "*",
+                "ext-filter": "*",
+                "ext-json": "*",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*"
+                "cache/taggable-cache": "^1.1.0",
+                "doctrine/coding-standard": "^9.0",
+                "doctrine/instantiator": "^1.4.0",
+                "ext-gmp": "*",
+                "ext-intl": "*",
+                "florianv/exchanger": "^2.6.3",
+                "florianv/swap": "^4.3.0",
+                "moneyphp/crypto-currencies": "^1.0.0",
+                "moneyphp/iso-currencies": "^3.2.1",
+                "php-http/message": "^1.11.0",
+                "php-http/mock-client": "^1.4.1",
+                "phpbench/phpbench": "^1.2.5",
+                "phpspec/phpspec": "^7.3",
+                "phpunit/phpunit": "^9.5.4",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "psr/cache": "^1.0.1",
+                "vimeo/psalm": "~5.3.0"
             },
             "suggest": {
-                "Sylius/SyliusMoneyBundle": "Sylius' Symfony2 integration with Money library",
-                "TheBigBrainsCompany/TbbcMoneyBundle": "Very complete Symfony2 bundle with support for Twig, Doctrine, Forms, ...",
-                "pink-tie/money-bundle": "Pink-Tie's Symfony2 integration with Money library"
+                "ext-gmp": "Calculate without integer limits",
+                "ext-intl": "Format Money objects with intl",
+                "florianv/exchanger": "Exchange rates library for PHP",
+                "florianv/swap": "Exchange rates library for PHP",
+                "psr/cache-implementation": "Used for Currency caching"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Money": "src"
+                "psr-4": {
+                    "Money\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -247,35 +268,29 @@
                 {
                     "name": "Mathias Verraes",
                     "email": "mathias@verraes.net",
-                    "homepage": "http://verraes.net",
-                    "role": "Developer of wrapped Money library"
+                    "homepage": "http://verraes.net"
                 },
                 {
-                    "name": "Gustavo Santos",
-                    "email": "gustavo.santos@hgestao.com.br"
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com"
                 },
                 {
-                    "name": "Hassan AMOUHZI",
-                    "email": "hassan@amouhzi.com"
-                },
-                {
-                    "name": "Aken Roberts",
-                    "email": "aken@swarmingtech.com"
+                    "name": "Frederik Bosch",
+                    "email": "f.bosch@genkgo.nl"
                 }
             ],
             "description": "PHP implementation of Fowler's Money pattern",
-            "homepage": "http://verraes.net/2011/04/fowler-money-pattern-in-php/",
+            "homepage": "http://moneyphp.org",
             "keywords": [
-                "Generic Sub-domain",
                 "Value Object",
-                "ddd",
-                "domain-driven design",
-                "money"
+                "money",
+                "vo"
             ],
             "support": {
-                "source": "https://github.com/php-mod/money/tree/master"
+                "issues": "https://github.com/moneyphp/money/issues",
+                "source": "https://github.com/moneyphp/money/tree/v4.1.0"
             },
-            "time": "2014-04-20T16:04:35+00:00"
+            "time": "2022-12-19T20:35:32+00:00"
         },
         {
             "name": "murtukov/php-code-generator",

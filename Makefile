@@ -6,6 +6,10 @@ setup:
 
 .PHONY: unit
 unit:
+	php vendor/bin/phpunit --testsuite "Unit tests"
+
+.PHONY: behat
+behat:
 	php vendor/bin/behat "${ARGS}"
 
 .PHONY: integration

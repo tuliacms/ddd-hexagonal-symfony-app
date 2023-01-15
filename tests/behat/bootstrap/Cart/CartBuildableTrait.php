@@ -46,6 +46,6 @@ trait CartBuildableTrait
      */
     public function thereIsAProductInCartWithQtyOf(string $product, int $qty): void
     {
-        $this->cartMother->withProduct($product, $qty);
+        $this->cartMother->withProduct($product, $qty, $this->productFinder);
     }
 }

@@ -1,7 +1,7 @@
 Feature: Remove product from cart
 
     Background:
-        Given there is product named "Fallout", with price 1.99 USD
+        Given there is product named "Fallout", with price 199 USD
         And there is a cart
         And there is a "Fallout" product in cart, with qty of 10
 
@@ -9,6 +9,6 @@ Feature: Remove product from cart
         When I remove product "Fallout" from cart
         Then product "Fallout" should be removed from cart
 
-    Scenario: I cannotr remove not-existent product from cart
+    Scenario: I cannot remove not-existent product from cart
         When I remove product "Non-existent product" from cart
         Then no product should be removed from cart

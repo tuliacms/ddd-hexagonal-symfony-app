@@ -37,7 +37,7 @@ class ProductContext implements Context
     /**
      * @Given there is product named :product, with price :amount :currency
      */
-    public function thereIsProductNamedWithPriceUsd(string $product, float $amount, string $currency): void
+    public function thereIsProductNamedWithPriceUsd(string $product, string $amount, string $currency): void
     {
         $this->product = ProductMother::aProduct($product)->withPrice($amount, $currency)->build();
         $this->productSpy = new AggregateRootSpy($this->product);
@@ -54,7 +54,7 @@ class ProductContext implements Context
     /**
      * @When I create new product named :product, with price :amount :currency
      */
-    public function iCreateNewProductNamedWithPrice(string $product, float $amount, string $currency): void
+    public function iCreateNewProductNamedWithPrice(string $product, string $amount, string $currency): void
     {
         try {
             $this->product = Product::create(

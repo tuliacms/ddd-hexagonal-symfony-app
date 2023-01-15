@@ -2,10 +2,10 @@ Feature: Add product to cart
 
     Background:
         Given there is a cart
-        And there is product named "Fallout", with price 1.99 USD
-        And there is product named "Don’t Starve", with price 2.99 USD
-        And there is product named "Baldur’s Gate", with price 3.99 USD
-        And there is product named "Icewind Dale", with price 4.99 USD
+        And there is product named "Fallout", with price 199 USD
+        And there is product named "Don’t Starve", with price 299 USD
+        And there is product named "Baldur’s Gate", with price 399 USD
+        And there is product named "Icewind Dale", with price 499 USD
 
     Scenario: I can add new product to cart
         When I add product "Fallout" to cart, with qty of 3

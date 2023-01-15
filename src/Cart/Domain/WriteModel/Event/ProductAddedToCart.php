@@ -13,7 +13,7 @@ final class ProductAddedToCart extends AbstractEventSourcingEvent
         public readonly string $cartId,
         public readonly string $productId,
         public readonly int $qty,
-        public readonly float $amount,
+        public readonly string $amount,
         public readonly string $currency,
     ) {
         parent::__construct();
