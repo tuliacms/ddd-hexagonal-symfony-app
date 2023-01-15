@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Cart\Domain\WriteModel\Model;
 
-use App\Cart\Domain\WriteModel\Event\AbstractEventSourcingEvent;
 use App\Cart\Domain\WriteModel\Event\CartCreated;
 use App\Cart\Domain\WriteModel\Event\ProductAddedToCart;
 use App\Cart\Domain\WriteModel\Event\ProductQtyIncreased;
 use App\Cart\Domain\WriteModel\Event\ProductRemovedFromCart;
+use App\Shared\Domain\WriteModel\Event\AbstractEventSourcingEvent;
 use Money\Currency;
 use Money\Money;
 

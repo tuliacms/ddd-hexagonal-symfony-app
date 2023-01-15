@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\helper\ObjectMother;
 
-use App\Cart\Domain\WriteModel\Event\AbstractEventSourcingEvent;
 use App\Cart\Domain\WriteModel\Event\CartCreated;
 use App\Cart\Domain\WriteModel\Event\ProductAddedToCart;
 use App\Cart\Domain\WriteModel\Model\Cart;
 use App\Cart\Domain\WriteModel\Service\ProductFinderInterface;
+use App\Shared\Domain\WriteModel\Event\AbstractEventSourcingEvent;
 use Symfony\Component\Uid\Uuid;
 
 /**

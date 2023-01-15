@@ -44,6 +44,11 @@ final class Cart extends AbstractAggregateRoot
         ];
     }
 
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
     /**
      * @throws CannotAddProductToCartException
      */

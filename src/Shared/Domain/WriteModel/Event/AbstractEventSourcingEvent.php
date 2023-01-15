@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Cart\Domain\WriteModel\Event;
+namespace App\Shared\Domain\WriteModel\Event;
 
 use DateTimeImmutable;
-use App\Shared\Domain\WriteModel\Event\AbstractDomainEvent;
 
 /**
  * @author Adam Banaszkiewicz
@@ -18,4 +17,6 @@ abstract class AbstractEventSourcingEvent extends AbstractDomainEvent
     {
         $this->createdAt = new DateTimeImmutable();
     }
+
+    abstract public function getAggregateId(): string;
 }

@@ -7,3 +7,10 @@ services:
     App\Tests\helper\SymfonyTestCase\:
         resource: '../tests/helper/SymfonyTestCase'
 
+    App\Cart\Application\UseCase\:
+        resource: '../src/Cart/Application/UseCase'
+        public: true
+
+    App\Product\Application\UseCase\:
+        resource: '../src/Product/Application/UseCase'
+        public: true
