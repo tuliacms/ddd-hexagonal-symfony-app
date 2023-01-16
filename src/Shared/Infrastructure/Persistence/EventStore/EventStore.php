@@ -42,6 +42,8 @@ final class EventStore
         $raw = $store->findBy(['aggregate_id', '=', $id]);
         $events = [];
 
+        usort($raw, fn($a, $b) => $a['event_date'] <=> $b['event_date']);
+
         foreach ($raw as $row) {
             $events[] = unserialize($row['serialized_event']);
         }

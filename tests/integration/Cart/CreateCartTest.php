@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\integration\Cart;
 
 use App\Cart\Application\UseCase\CreateCart;
-use App\Product\Application\UseCase\CreateProduct;
+use App\Cart\Domain\WriteModel\Event\CartCreated;
 use App\Tests\helper\SymfonyTestCase\Cart\CartEventStore;
-use App\Tests\helper\SymfonyTestCase\Product\ProductSeed;
-use App\Tests\helper\SymfonyTestCase\Product\ProductStorage;
 use App\Tests\integration\AbstractIntegrationTest;
 
 /**
@@ -35,6 +33,6 @@ final class CreateCartTest extends AbstractIntegrationTest
         $id = $createCart();
 
         // Then
-        self::assertSame(1, $this->cartEventStore->countEventsOf($id));
+        self::assertTrue($this->cartEventStore->hasEventOf($id, CartCreated::class));
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Cart\Infrastructure\Persistence\EventStore;
 
+use App\Cart\Domain\WriteModel\Exception\CartDoesNotExistsException;
 use App\Cart\Domain\WriteModel\Model\Cart;
 use App\Cart\Domain\WriteModel\Service\CartRepositoryInterface;
 use App\Shared\Domain\WriteModel\Event\AbstractEventSourcingEvent;
@@ -33,6 +34,10 @@ final class EventStoreCartRepository implements CartRepositoryInterface
     public function load(string $id): Cart
     {
         $events = $this->eventStore->load($id);
+
+        if (empty($events)) {
+            throw CartDoesNotExistsException::fromId($id);
+        }
 
         return Cart::regenerateFromEvents($events);
     }

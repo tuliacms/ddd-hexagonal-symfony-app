@@ -29,7 +29,7 @@ trait CartRegenerableTrait
         foreach ($events as $event) {
             switch (get_class($event)) {
                 case CartCreated::class:
-                    $cart = new self($event->id);
+                    $cart = new self($event->cartId);
                     break;
                 case ProductAddedToCart::class:
                     $cart->products[] = new Product(

@@ -16,8 +16,14 @@ final class CartEventStore
     ) {
     }
 
-    public function countEventsOf(string $aggregateId): int
+    public function hasEventOf(string $aggregateId, string $eventType): bool
     {
-        return \count($this->eventStore->load($aggregateId));
+        foreach ($this->eventStore->load($aggregateId) as $event) {
+            if ($event instanceof $eventType) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

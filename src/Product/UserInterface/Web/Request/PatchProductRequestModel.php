@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Product\UserInterface\Web\Request;
+
 use OpenApi\Attributes as OA;
 
 /**
