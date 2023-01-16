@@ -20,13 +20,19 @@ final class Product
 
     public function toArray(): array
     {
+        $sumPrice = $this->getPrice()->multiply($this->getQty());
+
         return [
             'product_id' => $this->productId,
             'qty' => $this->qty,
-            'price' => [
+            'total_price' => [
+                'amount' => $sumPrice->getAmount(),
+                'currency' => $sumPrice->getCurrency()->getCode(),
+            ],
+            'singular_price' => [
                 'amount' => $this->price->getAmount(),
                 'currency' => $this->price->getCurrency()->getCode(),
-            ]
+            ],
         ];
     }
 

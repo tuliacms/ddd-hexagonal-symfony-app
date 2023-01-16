@@ -10,3 +10,9 @@ RootQuery:
                         type: Int!
                 type: PaginatedProducts!
                 resolve: '@=query("root_product_list", args)'
+            cart:
+                args:
+                    id:
+                        type: String!
+                type: Cart
+                resolve: '@=query("root_cart", args)'

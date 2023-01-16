@@ -9,7 +9,7 @@ use App\Cart\Application\UseCase\CreateCart;
 use App\Cart\Application\UseCase\RemoveProduct;
 use App\Cart\Domain\WriteModel\Exception\CannotAddProductToCartException;
 use App\Cart\Domain\WriteModel\Exception\CartDoesNotExistsException;
-use App\Cart\UserInterface\Web\Request\AddProductToCart;
+use App\Cart\UserInterface\Web\Request\AddProductToCartRequestModel;
 use App\Shared\UserInterface\Web\Controller\AbstractApiController;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use OpenApi\Attributes as OA;
@@ -26,7 +26,7 @@ final class CartProducts extends AbstractApiController
         path: '/api/carts/{id}/products',
         requestBody: new OA\RequestBody(
             required: true,
-            content: new OA\JsonContent(ref: new Model(type: AddProductToCart::class))
+            content: new OA\JsonContent(ref: new Model(type: AddProductToCartRequestModel::class))
         ),
         tags: ['Carts'],
         responses: [

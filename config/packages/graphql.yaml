@@ -7,3 +7,4 @@ overblog_graphql:
             types:
                 - { type: yaml, dir: "%kernel.project_dir%/src/Shared/Infrastructure/Framework/Resources/config/graphql", suffix: null }
                 - { type: yaml, dir: "%kernel.project_dir%/src/Product/Infrastructure/Framework/Resources/config/graphql", suffix: null }
+                - { type: yaml, dir: "%kernel.project_dir%/src/Cart/Infrastructure/Framework/Resources/config/graphql", suffix: null }

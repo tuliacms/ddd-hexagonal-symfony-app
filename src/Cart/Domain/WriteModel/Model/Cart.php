@@ -13,6 +13,7 @@ use App\Cart\Domain\WriteModel\Rules\CanIAddProduct\CanIAddProductInterface;
 use App\Cart\Domain\WriteModel\Rules\CanIAddProduct\CanIAddProductReasonEnum;
 use App\Cart\Domain\WriteModel\Service\ProductFinderInterface;
 use App\Shared\Domain\WriteModel\Model\AbstractAggregateRoot;
+use Money\Money;
 
 /**
  * @author Adam Banaszkiewicz
@@ -27,20 +28,35 @@ final class Cart extends AbstractAggregateRoot
     private function __construct(
         private string $id,
     ) {
-        $this->recordThat(new CartCreated($this->id));
     }
 
     public static function create(
         string $id,
     ): self {
-        return new self($id);
+        $self = new self($id);
+        $self->recordThat(new CartCreated($id));
+
+        return $self;
     }
 
     public function toArray(): array
     {
+        $products = [];
+        $totalPrice = Money::USD(0);
+
+        foreach ($this->products as $product) {
+            $products[] = $product->toArray();
+            $sumPrice = $product->getPrice()->multiply($product->getQty());
+            $totalPrice = $totalPrice->add($sumPrice);
+        }
+
         return [
             'id' => $this->id,
-            'products' => array_map(static fn($p) => $p->toArray(), $this->products),
+            'products' => $products,
+            'total_price' => [
+                'amount' => $totalPrice->getAmount(),
+                'currency' => $totalPrice->getCurrency()->getCode(),
+            ],
         ];
     }
 

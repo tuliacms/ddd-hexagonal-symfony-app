@@ -9,8 +9,8 @@ use OpenApi\Attributes as OA;
 /**
  * @author Adam Banaszkiewicz
  */
-#[OA\Schema(schema: 'AddProductToCart', required: ['id', 'qty'], type: 'object')]
-final class AddProductToCart
+#[OA\Schema(schema: 'AddProductToCartRequestModel', required: ['id', 'qty'], type: 'object')]
+final class AddProductToCartRequestModel
 {
     #[OA\Property(type: 'string', example: 'a37a0c28-7c68-46ab-9f6e-2d0bc6c003cc')]
     public string $id;

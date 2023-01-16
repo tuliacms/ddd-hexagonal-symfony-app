@@ -1,0 +1,15 @@
+CartItem:
+    type: object
+    config:
+        fields:
+            productId:
+                type: String!
+            singularPrice:
+                type: Price!
+            totalPrice:
+                type: Price!
+            qty:
+                type: Int!
+            product:
+                type: Product!
+                resolve: '@=query("product_single", value)'

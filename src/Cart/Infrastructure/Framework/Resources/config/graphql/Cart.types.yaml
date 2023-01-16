@@ -1,0 +1,10 @@
+Cart:
+    type: object
+    config:
+        fields:
+            id:
+                type: String!
+            totalPrice:
+                type: Price!
+            items:
+                type: "[CartItem!]"
